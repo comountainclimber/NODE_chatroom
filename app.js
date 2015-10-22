@@ -44,7 +44,13 @@ var numUsers = 0
 io.on('connection', function(socket) {
 	console.log('a user connected')
 	socket.on('disconnect', function(){
-		console.log('user disconnected');
+		// for (var i = 0; i < usersArray; i++) {
+		// 	if (socket.username===usersArray[i].name) {
+		// 	console.log(usersArray[i])
+		// 	}
+		// };
+
+		console.log(socket.username, 'has disconnected');
 	});
 // when the client emits 'new message', this listens and executes
 socket.on('message', function (data){
