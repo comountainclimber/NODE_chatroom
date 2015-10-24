@@ -44,7 +44,16 @@ var numUsers = 0
 io.on('connection', function(socket) {
 	console.log('a user connected')
 	socket.on('disconnect', function(){
-		console.log('user disconnected');
+
+		console.log(socket.username, 'has disconnected')
+		for (var i = 0; i < usersArray.length; i++) {
+			if (usersArray[i] === socket.username){
+				usersArray.splice([i],1)
+			}
+		}
+		console.log(usersArray)
+		// io.emit('updatedUsers', users)
+		io.emit('user', usersArray)
 	});
 // when the client emits 'new message', this listens and executes
 socket.on('message', function (data){

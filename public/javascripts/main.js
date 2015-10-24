@@ -16,6 +16,10 @@ angular.module('ChatApp')
 			$scope.$apply(function(){$scope.allUsers})
 		})
 
+		// socket.on('updatedUsers', function(){
+		// 	$scope.$apply(function(){$scope.allUsers})
+		// })
+
 		$scope.chatMessage = function(){
 			console.log($scope.chatData)
 			socket.emit('message', $scope.chatData.message)
