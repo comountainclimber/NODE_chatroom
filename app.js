@@ -1,8 +1,3 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
@@ -44,7 +39,6 @@ var numUsers = 0
 io.on('connection', function(socket) {
 	console.log('a user connected')
 	socket.on('disconnect', function(){
-<<<<<<< HEAD
 
 		console.log(socket.username, 'has disconnected')
 		for (var i = 0; i < usersArray.length; i++) {
@@ -53,17 +47,9 @@ io.on('connection', function(socket) {
 			}
 		}
 		console.log(usersArray)
-		// io.emit('updatedUsers', users)
 		io.emit('user', usersArray)
-=======
-		// for (var i = 0; i < usersArray; i++) {
-		// 	if (socket.username===usersArray[i].name) {
-		// 	console.log(usersArray[i])
-		// 	}
-		// };
-
 		console.log(socket.username, 'has disconnected');
->>>>>>> 733de116d49632911e3618c230a4d3d99ca8cee3
+		io.emit('disconnect', socket.username)
 	});
 // when the client emits 'new message', this listens and executes
 socket.on('message', function (data){

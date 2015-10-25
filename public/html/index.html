@@ -5,13 +5,15 @@
 	<link rel="stylesheet", href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js" type="text/javascript"></script>
 	<link rel="stylesheet", href="/stylesheets/style.css">
+	<link rel="icon" href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRdXGYxMcNVEbsgia_ViswR8Z1rQ_x8dAv_SdYAEfZ7ER6wWXQPCgPw8yQ" type="image/gif" sizes="16x16">
 </head>
 <body ng-controller="mainController" ng-cloak>
 
 	<div class = "content">
 		<div class = "container">
 			<div class = "row">
-				<img class="pizzaLogo" src="http://24.media.tumblr.com/abee7669c7e3a9a1ed20b6efc44c1558/tumblr_my0wpqC79A1s38w7mo1_500.gif"><h1> WELCOME TO PIZZA CHAT! </h1> 
+			<!-- 	<img class="pizzaLogo" src="http://24.media.tumblr.com/abee7669c7e3a9a1ed20b6efc44c1558/tumblr_my0wpqC79A1s38w7mo1_500.gif"><h1> WELCOME TO PIZZA CHAT! </h1>  -->
+			<h1> Welcome to the pizza chat </h1>
 			</div>
 			<div class = "row">
 				<form ng-submit="usernameSubmit()" ng-hide="hideUserNameInput">
@@ -22,8 +24,14 @@
 			</div>
 			<div class = "row" ng-hide="hideTheChat">
 				<div class = "room col-xs-10">
+					<!-- <div ng-show="displayConnection">
+						{{user.name}} has entered the pizza chat!
+					</div> -->
+					<div ng-repeat="user in disconnectedUsers" ng-show="hasD">
+						{{user}} has left the pizza chat!
+					</div>
 					<div ng-repeat="message in messages track by $index">
-					{{message.user}} : {{message.data}}
+						{{message.user}} : {{message.data}}
 					</div>
 				</div>
 				<div class = "users col-xs-2">
