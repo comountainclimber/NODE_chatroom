@@ -30,6 +30,9 @@
 					<div ng-repeat="user in disconnectedUsers" ng-show="hasD">
 						{{user}} has left the pizza chat!
 					</div>
+					<div ng-repeat="user in enteringUsers" ng-show="hasE">
+						{{user}} has entered the pizza chat!
+					</div>
 					<div ng-repeat="message in messages track by $index">
 						{{message.user}} : {{message.data}}
 					</div>

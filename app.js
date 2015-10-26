@@ -62,6 +62,7 @@ socket.on('message', function (data){
 })
 socket.on('username', function (user) {
 	// console.log("username: ",user)
+	io.emit('enteringChat', user)
 	usersArray.push(user)
 	// console.log("allUsers: ", usersArray)
 	socket.username = user;

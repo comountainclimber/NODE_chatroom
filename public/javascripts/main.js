@@ -5,6 +5,7 @@ angular.module('ChatApp')
 
 		$scope.messages = []
 		$scope.disconnectedUsers = []
+		$scope.enteringUsers = []
 		
 
 		socket.on('message', function(data){
@@ -13,7 +14,8 @@ angular.module('ChatApp')
 		})
 
 		socket.on('user', function(user){
-			console.log(user)
+
+			// console.log(user, "has entered the pizza chat!")
 			$scope.allUsers = user
 			$scope.$apply(function(){$scope.allUsers})
 		})
@@ -21,11 +23,18 @@ angular.module('ChatApp')
 			$scope.hasD = false
 
 		socket.on('disconnect', function(user){
-			console.log(user, "has left the pizza chat")
+			console.log(user, "has left the pizza chat!")
 			$scope.hasD = true
 			$scope.disconnectedUsers.push(user)
 			$scope.$apply(function(){$scope.disconnectedUsers})
 			
+		})
+			$scope.hasE = false
+		socket.on('enteringChat', function(enteringUser){
+			console.log(enteringUser, "has entered the chat")
+			$scope.hasE = true
+			$scope.enteringUsers.push(enteringUser)
+			$scope.$apply(function(){$scope.enteringUsers})
 		})
 
 		// socket.on('updatedUsers', function(){
